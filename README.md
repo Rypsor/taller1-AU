@@ -1,10 +1,12 @@
 # Taller 1: Predicción de Riesgo de Accidentes
 
-Este repositorio contiene el desarrollo del Taller 1, enfocado en la creación de modelos de machine learning para predecir el riesgo de accidentes de tráfico. Se exploraron dos enfoques principales: un modelo lineal simple y un ensamble avanzado de stacking.
+Este repositorio contiene el desarrollo del Taller 1, enfocado en la creación de modelos de machine learning para predecir el riesgo de accidentes de tráfico. El proyecto se basa en la competencia de Kaggle: [Playground Series - S5E10](https://www.kaggle.com/competitions/playground-series-s5e10/overview).
 
 ## 🚀 Resultados en la Competición
 
-Los modelos fueron evaluados en la competición de Kaggle, obteniendo los siguientes resultados:
+Los modelos fueron evaluados en la competición, obteniendo los siguientes resultados.
+
+![Resultados en el Leaderboard](./leaderboard.png)
 
 | Modelo                 | Score (RMSE) | Posición en Leaderboard |
 | :--------------------- | :----------: | :---------------------: |
