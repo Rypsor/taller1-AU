@@ -6,26 +6,30 @@ Este repositorio contiene el desarrollo del Taller 1, enfocado en la creación d
 
 Los modelos fueron evaluados en la competición de Kaggle, obteniendo los siguientes resultados:
 
-| Modelo | Score (RMSE) | Posición en Leaderboard |
-| :--- | :---: | :---: |
-| **Ensamble Stacking** | **0.05556** | **696** |
-| Modelo Lineal (Ridge) | 0.07199 | 2559 |
+| Modelo                 | Score (RMSE) | Posición en Leaderboard |
+| :--------------------- | :----------: | :---------------------: |
+| **Ensamble Stacking** | **0.05556** |    **696** |
+| Modelo Lineal (Ridge)  |   0.07199    |          2559           |
 
 ---
 
 ## 🤖 Comparación de Modelos
 
 ### Modelo Lineal (Baseline)
-Se implementó un modelo de **Regresión Ridge** como punto de partida. Aunque es rápido y fácil de interpretar, su naturaleza lineal limita su capacidad para capturar las interacciones complejas y no lineales presentes en los datos, como la relación entre el clima, la iluminación y el tipo de vía. Esto se reflejó en un score de **0.07199**, ubicándose en la posición **2559**.
+
+Se implementó un modelo de **Regresión Ridge** como punto de partida. Este modelo fue entrenado únicamente con los datos originales proporcionados. Aunque es rápido, su naturaleza lineal y la falta de información adicional limitaron su capacidad para capturar las interacciones complejas del problema. Esto se reflejó en un score de **0.07199**, ubicándose en la posición **2559**.
 
 ### Ensamble Stacking (Modelo Avanzado)
-Para mejorar el rendimiento, se construyó un **ensamble de stacking**. Este enfoque es significativamente más potente por las siguientes razones:
 
-1.  **Combina Fortalezas**: El ensamble utilizó tres modelos base robustos (**XGBoost, LightGBM y CatBoost**). Cada uno de estos modelos es experto en identificar diferentes tipos de patrones en los datos.
-2.  **Meta-aprendizaje**: En lugar de promediar las predicciones, el stacking añade un "meta-modelo" (`Ridge`) que aprende a ponderar de forma inteligente las predicciones de los modelos base. Este "gerente" sabe cuándo confiar más en XGBoost, cuándo en LightGBM, etc., según el tipo de datos de entrada.
-3.  **Reducción del Error**: Al combinar las perspectivas de múltiples modelos diversos, el ensamble es más robusto y generaliza mejor, reduciendo el error de predicción.
+Para mejorar el rendimiento, se construyó un **ensamble de stacking**, que resultó ser un enfoque muy superior por dos razones clave:
 
-Gracias a esta estrategia avanzada, el ensamble de stacking logró un score de **0.05556**, lo que nos posicionó en el **lugar 696** del leaderboard, demostrando ser un enfoque muy superior para este problema.
+1.  **Ventaja Informativa (Datos Sintéticos)**: La diferencia más significativa fue el uso de **aumentación de datos**. Se utilizó una función para generar datos sintéticos que, según se infiere, replicaba la lógica con la que se crearon los datos de la competencia. Al entrenar el ensamble con estos datos sintéticos además de los reales, el modelo obtuvo una "vista previa" de la estructura subyacente del problema. Esta fue una ventaja fundamental que el modelo lineal no tuvo.
+
+2.  **Arquitectura de Ensamble Avanzada**:
+    * **Combina Fortalezas**: El ensamble utilizó tres modelos base robustos (**XGBoost, LightGBM y CatBoost**), cada uno experto en identificar diferentes tipos de patrones.
+    * **Meta-aprendizaje**: En lugar de simplemente promediar, el stacking añade un "meta-modelo" (`Ridge`) que aprende a ponderar de forma inteligente las predicciones de los modelos base, creando una predicción final más precisa y robusta.
+
+Gracias a la combinación de una arquitectura de modelo superior y, crucialmente, al entrenamiento con datos sintéticos informativos, el ensamble logró un score de **0.05556**, lo que nos posicionó en el **lugar 696** del leaderboard.
 
 ---
 
